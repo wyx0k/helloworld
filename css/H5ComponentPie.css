@@ -1,0 +1,12 @@
+/* 饼图组件样式 */
+.H5_Component_Pie canvas{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.H5_Component_Pie .text{
+	position: absolute;
+	text-align: center;
+	width: 40px;
+	-webkit-transition:all 2s;
+}

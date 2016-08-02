@@ -1,0 +1,68 @@
+/*loading动画样式
+body{
+	position: fixed;
+	width: 100%
+	height:100%;
+}*/
+.loading{
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 50%;
+	top:50%;
+	margin-left:-30px;
+}
+.loading .double-bounce1,.double-bounce2{
+	width: 100%;
+	height: 100%;
+	border-radius:50%;
+	background-color: #0062e0;
+	left: 0;
+	top:0;
+	position: absolute;
+	opacity: .6;
+	}
+.loading #rate{
+	font-size: 10px;
+	width: 100%;
+	line-height: 20px;
+	text-align:center;
+	color: #0062e0;
+	position: absolute;
+	top: 100%
+}
+.double-bounce1{
+		animation: bounce 2s infinite;
+		-moz-animation: bounce 2s infinite;	/* Firefox */
+		-webkit-animation: bounce 2s infinite;	/* Safari 和 Chrome */
+		-o-animation: bounce 2s infinite;	/
+}
+.double-bounce2{
+		animation: bounce 2s infinite 1s;
+		-moz-animation: bounce 2s infinite 1s;	/* Firefox */
+		-webkit-animation: bounce 2s infinite 1s;	/* Safari 和 Chrome */
+		-o-animation: bounce 2s infinite 1s;	/
+}
+			@keyframes bounce
+					{
+						0%,100% {transform:scale(0)}
+						50% {transform:scale(1)}
+					}
+
+			@-moz-keyframes bounce /* Firefox */
+					{
+						0%,100% {transform:scale(0)}
+						50% {transform:scale(1)}
+					}
+
+			@-webkit-keyframes bounce /* Safari 和 Chrome */
+					{
+						0%,100% {transform:scale(0)}
+						50% {transform:scale(1)}
+					}
+
+			@-o-keyframes bounce /* Opera */
+					{
+						0%,100% {transform:scale(0)}
+						50% {transform:scale(1)}
+					}

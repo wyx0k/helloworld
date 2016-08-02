@@ -1,0 +1,62 @@
+/* 垂直柱状组件样式 */
+
+
+/* 柱状组件样式 */
+
+.H5_Component_Bar_v .line{
+	float: left;
+position: relative;
+	font-size: 11px;
+	line-height: 15px;
+	margin-bottom: 15px;
+}
+.H5_Component_Bar_v .rate{
+	font-size: 14px;
+	color: #aaa;
+	height: 15px;
+	position: absolute;
+	top:-15px; 
+	opacity: 0;
+}
+.H5_Component_Bar_v .bar{
+width: 16px;
+left: 50%;
+margin-left: -8px;
+bottom: 0;
+position: absolute;
+}
+.H5_Component_Bar_v .dataname{
+	width: 100%;
+	height: 15px;
+	position: absolute;
+	text-align: center;
+	bottom: -15px;
+}
+.H5_Component_Bar_v .bar .bg{
+	background-color: #66ccff;
+	height: 0%;
+	width: 100%;
+	border-radius: 3px;
+	bottom: 0;
+	position: absolute;
+}
+.H5_Component_Bar_v_Load .bar .bg{
+-webkit-transition:all 1s .2s;
+-moz-transition:all 1s .2s;
+height:100%;
+}
+.H5_Component_Bar_v_Leave .bar .bg{
+	-webkit-transition:all 1s;
+	-moz-transition:all 1s;
+height:0%;
+}
+.H5_Component_Bar_v_Load .rate{
+	-webkit-transition:all 1s 1.2s;
+	-moz-transition:all 1s 1.2s;
+    opacity: 1;
+}
+.H5_Component_Bar_v_Leave .rate{
+	-webkit-transition:all 1s;
+	-moz-transition:all 1s;
+	opacity: 0;
+}

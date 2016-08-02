@@ -1,0 +1,23 @@
+/* 折线图组件样式 */
+.H5_Component_Polyline canvas{
+position: absolute;
+top:0;
+left:0;
+width:100%;
+height: 100%;
+}
+.H5_Component_Polyline .text{
+	height: 15px;
+	position: absolute;
+	bottom: -15px;
+	text-align: center;
+	opacity: 0;
+}
+.H5_Component_Polyline_Load .text{
+-webkit-transition:all 3s 1s;
+opacity: 1;
+}
+.H5_Component_Polyline_Leave .text{
+	-webkit-transition:all 3s;
+	opacity: 0;
+}
