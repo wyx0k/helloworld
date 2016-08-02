@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>行星与飞船</title>
+<style>
+*{margin: 0;padding:0;}
+body{background: black;}
+#conctr{
+	background: #ccc;
+	margin: 10px;
+	border: 1px solid #ccc;
+	width: 400px;
+padding-bottom: 10px;
+text-align: center;
+border-radius: 10%;
+}
+.ctrinfo{background: #8888ff;color:#333;}
+.pref{
+	position: absolute;
+	top: 20px;
+    left: 35%;
+	width: 500px;
+	height: 500px;
+	background: #000;
+}
+.O{   position: absolute;
+left: 30px;
+top:30px;
+  border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: blue;
+  }
+
+  .orb{border:1px dashed green;margin: 40px auto;border-radius: 50%;}
+ .o1{position: relative;
+ 	width: 140px;
+ 	height: 140px;
+ }
+ 	 .o2{width: 220px;
+ 	height: 220px;
+ }
+ 	 .o3{width: 300px;
+ 	height: 300px;
+ }
+ 	 .o4{position: absolute;
+ 	 	margin: 0;
+ 	 	top:60px;
+ 	 	left:60px;
+ 	 	width: 380px;
+ 	height: 380px;}
+ 	.btn{display:block;margin: 0 auto;}
+ 	.btnx{margin-right: 10px;margin-bottom:5px;}
+ 	.ctrinfo{padding:20px;border: 1px dashed blue;height:300px;margin: 10px 10px;overflow: scroll;overflow-x: auto;}
+ 	.sp{   position: absolute;
+ 		left:0;
+ 		top:0;
+	border: 4px dashed blue;
+	border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background: white;
+    display: none;
+  }
+.spfuel{margin-top:7px;float:left;background:#00ff33;height:5px;width:100%;}
+</style>
+</head>
+<body>
+<div id='conctr'>
+宇航中心日志
+<div class='ctrinfo'></div>
+<button class='btn btn1'>发射新的飞船</button><br/>
+<div id='ui'></div>
+</div>
+<div class='pref' id='pref'>
+						<div id='domenterprise1' class='sp'><div id='domenterprise1fuel' class='spfuel'></div></div>
+						<div id='domenterprise2' class='sp'><div id='domenterprise2fuel' class='spfuel'></div></div>
+						<div id='domenterprise3' class='sp'><div id='domenterprise3fuel' class='spfuel'></div></div>
+						<div id='domenterprise4' class='sp'><div id='domenterprise4fuel' class='spfuel'></div></div>
+
+	<div class='orb o4'>
+		<div class='orb o3'>
+			<div class='orb o2'>
+				<div class='orb o1'>
+						<div class='O'>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script language='javaScript' src='SSS.js'></script>
+</body>
+</html>
