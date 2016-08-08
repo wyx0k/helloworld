@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+		font-family: "Microsoft YaHei",sans-serif;
+}
+#mainbody{
+	margin-top:60px;
+	padding-top:60px;
+	width:100%;
+	height: 600px;
+	background: -webkit-linear-gradient(black, white); /* Safari 5.1 - 6.0 */
+ 	background: -o-linear-gradient(black, white); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(black, white); /* Firefox 3.6 - 15 */
+	background: linear-gradient(black, white); /* 标准的语法 */
+	display:flex; 
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+.header{
+	width:100%;
+	height: 60px;
+	background-color: #777077;
+	position:fixed;
+	top:0;
+	display:flex; 
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: flex-start;
+	z-index: 10;
+}
+
+.nav-icon{
+	flex-shrink:0;
+	width: 100px;
+	margin: 0 50px;
+	font-size: 25px;
+}
+.header .nav{
+	display:flex; 
+	flex-flow: row wrap;
+
+}
+.nav-item{
+	text-align: center;
+	line-height: 60px;
+	flex-shrink:1;
+	height: 60px;
+	width: 100px;
+	list-style: none;
+	margin:0 30px;
+	border-radius: 5px;
+}
+.nav-item:hover{
+	background-color: #666;
+	cursor:pointer;
+}
+.nav-font{
+	font-family: "Microsoft YaHei",sans-serif;
+	color: #fff;
+}
+.nav-productor{
+	flex-shrink:0;
+	width: 400px;
+	margin: 0 50px;
+	font-size: 15px;
+}
+
+.right-con{
+	left:520px;
+	width: 900px;
+	height: 600px;
+	background-color: rgba(0,0,0,.5);
+	margin-left:30px;
+	display:flex; 
+	flex-flow: column wrap;
+	justify-content: flex-start;
+}
+.left-indata{
+	margin-top:10px;
+	height: 50px;
+	width: 400px;
+	background-color: rgba(10,10,10,.4);
+	box-shadow: 3px 3px 3px 1px rgba(10 ,10,10,.4) ;
+	margin-left:100px;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+}
+.right-indata{
+	margin-top:22px;
+	height: 50px;
+	width: 100%;
+	background-color: rgba(120,120,120,.7);
+	box-shadow: 0px 3px 3px 1px rgba(100 ,100,100,.4) ;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	display:flex; 
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-around;
+}
+.left-textbox{
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+}
+.left-radio{
+	cursor: pointer;
+}
+.left-con-conctrl{
+	display:flex; 
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-around;
+}
+.right-con-conctrl{
+	position: absolute;
+	top:60px;
+	width: 900px;
+}
+.left-con-no,.left-con-yes{
+	cursor: pointer;
+}
+.lastpage,.nextpage{
+	width: 60px;
+	height: 50px;
+}
+.lastpage:hover,.nextpage:hover{
+	background-color: #666;
+	cursor: pointer;
+}
+.right-data-area{
+	display:flex; 
+	flex-flow: column wrap;
+	justify-content: flex-start;
+}
+.right-data-none{
+	display: none;
+}
+.pageindex{
+	width: 20px;
+}
+span{
+	width: 80px;
+}
+.nav-link{
+	text-decoration: none;
+	color: #fff;
+}
+</style>
+</head>
+<body>
+<div class="header">
+
+	<div class="nav-icon nav-font"><a href="../销量记录.html" class="nav-link">管理系统</a></div>
+	<ul class="nav">
+			<li  class="nav-item nav-font js-nav-item"><a href="datain.html" class="nav-link">录入数据</a></li>
+			<li  class="nav-item nav-font js-nav-item"><a href="calcu.html" class="nav-link">查看统计</a></li>
+	</ul>
+	<div class="nav-productor nav-font">by wyx0k version:1.0</div>
+
+</div>
+
+<div id="mainbody">
+		<div class="left-con">
+			<div class="left-indata">
+			<input type="radio" name="typename" value="1" id="left-radio-1" class="left-radio"/>
+			<label for="left-radio-1" class="left-radio">7扣</label>
+			&nbsp;&nbsp;
+			<input type="radio" name="typename" value="2" id="left-radio-2" class="left-radio"/>
+			<label for="left-radio-2" class="left-radio">Z扣</label>
+			&nbsp;&nbsp;
+			<input type="radio" name="typename" value="3" id="left-radio-3" class="left-radio"/>
+			<label for="left-radio-3" class="left-radio">自动扣</label>
+			&nbsp;&nbsp;
+			<input type="radio" name="typename" value="4" id="left-radio-4" class="left-radio"/>
+			<label for="left-radio-4" class="left-radio">双Z扣</label>
+			&nbsp;&nbsp;
+			<input type="radio" name="typename" value="5" id="left-radio-5" class="left-radio"/>
+			<label for="left-radio-5" class="left-radio">G扣</label>
+			&nbsp;&nbsp;
+			<input type="radio" name="typename" value="6" id="left-radio-6" class="left-radio"/>
+			<label for="left-radio-6" class="left-radio">8扣</label>
+			&nbsp;&nbsp;
+			</div>
+			<div class="left-indata">
+			单价<input type="text" class="left-textbox" value="0"/>
+			</div>
+			<div class="left-indata">
+			成本<input type="text" class="left-textbox" value="0"/>&nbsp;
+			附件成本<input type="text" class="left-textbox" />&nbsp;
+			运费<input type="text" class="left-textbox" />
+			</div>
+			<div class="left-con-conctrl left-indata">
+			<img src="../imgs/no.png" class="left-con-no js-user" />
+			<img src="../imgs/yes.png" class="left-con-yes js-user" />
+			</div>
+		</div>
+		<div class="right-con">
+			<div class="right-indata right-con-conctrl">
+				<span class="lastpage" id="lastpage">上一页</span>
+				第<span class="pageindex"></span>页
+				<span class="lastpage" id="nextpage">下一页</span>
+			</div>
+			<div class="right-indata">
+				<span>日期</span>
+				<span>日排序</span>
+				<span>型号</span>
+				<span>单价</span>
+				<span>单条总成本</span>
+				<span>单利润</span>
+			</div>
+			<div class="right-data-none" id="1"></div></div>
+<script type="text/javascript">
+var date=new Date;
+var day=(date.getDate()<10)?'0'+date.getDate():date.getDate();
+var month=(date.getMonth()+1<10)?'0'+(date.getMonth()+1):date.getMonth()+1;
+var year=date.getFullYear();
+var today=year+'.'+month+'.'+day
+	globe={};
+ 	globe.databox=document.getElementsByTagName('input');
+ 	globe.useryes=document.getElementsByClassName('js-user')[1];
+ 	globe.userno=document.getElementsByClassName('js-user')[0];
+ 	globe.pageindex=document.getElementsByClassName('pageindex')[0];
+ 	globe.rightCon=document.getElementsByClassName('right-con')[0];
+ 	globe.nextpage=document.getElementById('nextpage');
+ 	globe.lastpage=document.getElementById('lastpage');
+ 	globe.goods=['7扣','Z扣','自动扣','双Z扣','G扣','8扣'];
+ 	globe.goodsval=[138,138,158,138,138,138];
+ 	globe.costval=[59,59,61,52,52,56];
+ 	globe.express=6;
+ 	globe.goodsattach=9.5;
+ 
+ globe.useryes.onclick=function(){
+	input(globe.databox);
+}
+ 
+ globe.userno.onclick=function(){
+	for(i=6;i<globe.databox.length;i++){
+	 globe.databox[i].value=''
+	}
+}
+globe.nextpage.onclick=function(){//下一页，页码加
+	var currentpage=document.getElementsByClassName('right-data-area')[0];
+	var nextindex=parseInt(currentpage.id)+1;
+	var next=document.getElementById(nextindex);
+	if(next){
+		changeclass(currentpage,'right-data-area','right-data-none');
+		changeclass(next,'right-data-none','right-data-area');
+		globe.pageindex.innerHTML=nextindex;
+	}
+
+}
+globe.lastpage.onclick=function(){//上一页，页码减
+	var currentpage=document.getElementsByClassName('right-data-area')[0];
+	var lastindex=(parseInt(currentpage.id)-1).toString();
+	var last=document.getElementById(lastindex);
+	if(last){
+		changeclass(currentpage,'right-data-area','right-data-none');
+		changeclass(last,'right-data-none','right-data-area');
+		globe.pageindex.innerHTML=lastindex;
+	}
+}
+function currentpage(){//转跳到最新的一页
+	var currentpage=document.getElementsByClassName('right-data-area')[0];
+	if(currentpage!=globe.rightCon.lastChild){
+	changeclass(currentpage,'right-data-area','right-data-none');
+	changeclass(globe.rightCon.lastChild,'right-data-none','right-data-area');
+	}
+	globe.pageindex.innerHTML=globe.rightCon.lastChild.id;
+}
+function input(databox){//把数据放入页内如果满则新建一页
+	var rightCon=document.getElementsByClassName('right-data-area')[0];
+	var leftradio=document.getElementsByName('typename');
+	var currentdata=[];
+	if(globe.rightCon.lastChild.childNodes.length>=7){
+		changeclass(rightCon,'right-data-area','right-data-none')
+		newpage('right-data-area',true);
+	}else{//---------------------------------------------------------------------待写入数据排版{
+			currentpage();
+			var todaydata=[];
+			todaydata.push(today);
+			//------------------------------------//更改需求+----
+				if(localStorage.getItem(today)){
+					currentdata=JSON.parse(localStorage.getItem(today));
+					var todayindex=currentdata.length+1;
+				}else{
+					var todayindex=1;
+				}
+				todaydata.push(todayindex);
+			//------------------------------------
+			var chec=false;
+			for(i=0;i<leftradio.length;i++){
+				if(leftradio[i].checked){
+						chec=true;
+					switch(leftradio[i].value){
+						case '1':
+							todaydata.push(globe.goods[0]);
+							break;
+						case '2':
+							todaydata.push(globe.goods[1]);
+							break;
+						case '3':
+							todaydata.push(globe.goods[2]);
+							break;
+						case '4':
+							todaydata.push(globe.goods[3]);
+							break;
+						case '5':
+							todaydata.push(globe.goods[4]);
+							break;
+						case '6':
+							todaydata.push(globe.goods[5]);
+							break;
+						default:
+						    alert('还没有选择型号！');
+					}
+				}
+			}	
+			if(!chec){
+				alert('还没有选择型号！');
+				return false;
+			}
+			todaydata.push(globe.databox[6].value)
+			var s=0;
+			for(i=7;i<globe.databox.length;i++){
+				
+				if(globe.databox[i].value!=''){
+					s=parseFloat(s)+parseFloat(globe.databox[i].value);
+					
+				}else{
+					s=parseFloat(s)+0;
+				}
+				
+			}
+			todaydata.push(s);	
+			todaydata.push(globe.databox[6].value-s);
+			//----------------------------------------------------------------------------------------------}
+				if(localStorage.getItem(today)){//------------------------------写入数据到localstorage
+					currentdata=JSON.parse(localStorage.getItem(today));
+				}
+				currentdata.push(todaydata);
+				localStorage.setItem(today,JSON.stringify(currentdata));
+				var newdiv=document.createElement('div');//-----------------------把数据放入用户界面
+				newdiv.className='right-indata';
+				for(i=0;i<todaydata.length;i++){
+					var newspan=document.createElement('span');
+					newspan.innerHTML=todaydata[i];
+					newdiv.appendChild(newspan);
+				}
+				globe.rightCon.lastChild.appendChild(newdiv);
+		}
+}
+function newpage(name,swi){//新建页
+	var newdiv=document.createElement('div');
+	newdiv.className=name;
+	newdiv.id= parseInt(globe.rightCon.lastChild.id)+1;
+	globe.rightCon.appendChild(newdiv);
+	if(swi){
+	input(globe.databox);
+	}
+	currentpage();
+}
+function changeclass(node,oldclass,newclass){
+	if(node){
+		var classes=node.className;
+		if(oldclass){
+		changedclasses=classes.replace(oldclass,newclass);
+		node.className=changedclasses;
+		}
+	}//更改类名
+}
+function setup(){//刷新页码并初始化
+	//---------------------------------------------------------初始化已有数据--{
+	if(!(window.localStorage)){   
+         alert("此浏览器还不支持 web storage 功能，请更换浏览器");  
+    }else{
+			var newcurrentpage=document.getElementsByClassName('right-data-none')[0];
+			var setupdata=[];
+			globe.pageindex.innerHTML=newcurrentpage.id;
+			if(localStorage.length==0){
+				changeclass(globe.rightCon.lastChild,'right-data-none','right-data-area');
+			}else{
+				for(i=0;i<localStorage.length;i++){//遍历所有数据放入setupdata
+					var key=localStorage.key(i);
+					var content=JSON.parse(localStorage.getItem(key));
+					for(j=0;j<content.length;j++){
+						setupdata.push(content[j]);
+					}
+					
+				}
+				for(j=0;j<setupdata.length;j++){//初始化数据到用户界面
+					if(j%7==0&&j!=0){
+						newpage('right-data-none');
+					}
+					var newdiv=document.createElement('div');
+					newdiv.className='right-indata';
+					for(k=0;k<setupdata[j].length;k++){
+						var newspan=document.createElement('span');
+						newspan.innerHTML=setupdata[j][k];
+						newdiv.appendChild(newspan);
+					}
+					globe.rightCon.lastChild.appendChild(newdiv);
+					if(j==setupdata.length-1){
+						changeclass(globe.rightCon.lastChild,'right-data-none','right-data-area');
+					}
+				}
+			}
+		}
+		//------------------------------------------------------------------}
+		//---------------------------------------------------------------------------初始化默认值{
+			var lefttextbox=document.getElementsByClassName('left-textbox');
+			lefttextbox[2].value=globe.goodsattach
+			lefttextbox[3].value=globe.express
+			var leftradio=document.getElementsByName('typename');
+			for(i=0;i<leftradio.length;i++){
+				(function(){
+				leftradio[i].onclick=function(){
+					lefttextbox[0].value=globe.goodsval[this.value-1];
+					lefttextbox[1].value=globe.costval[this.value-1];
+				}
+				})();
+			}
+		//---------------------------------------------------------------------------}
+}
+function clearalldata(){
+	localStorage.clear();
+}
+setup();
+</script>
+</body>
+</html>
