@@ -254,6 +254,7 @@ var today=year+'.'+month+'.'+day;
 	for(i=6;i<globe.databox.length;i++){
 	 globe.databox[i].value=''
 	}
+	window.location.reload();
 }
 globe.nextpage.onclick=function(){//下一页，页码加
 	var currentpage=document.getElementsByClassName('right-data-area')[0];
@@ -468,7 +469,6 @@ function setup(){//刷新页码并初始化
 function clearalldata(){
 	localStorage.clear();
 }
-
 setup();
 </script>
 </body>
