@@ -249,6 +249,8 @@ var today=year+'.'+month+'.'+day;
 }
  
  globe.userno.onclick=function(){
+  	var removeday=globe.databox[10].value+'.'+globe.databox[11].value+'.'+globe.databox[12].value;
+   	localStorage.removeItem(removeday);
 	for(i=6;i<globe.databox.length;i++){
 	 globe.databox[i].value=''
 	}
@@ -466,6 +468,7 @@ function setup(){//刷新页码并初始化
 function clearalldata(){
 	localStorage.clear();
 }
+
 setup();
 </script>
 </body>

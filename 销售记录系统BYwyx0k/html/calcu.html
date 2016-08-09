@@ -168,8 +168,8 @@ span{
 
 	<div class="nav-icon nav-font"><a href="../销量记录.html" class="nav-link">管理系统</a></div>
 	<ul class="nav">
-			<li  class="nav-item nav-font js-nav-item"><a href="datain.html" class="nav-link">录入数据</a></li>
-			<li  class="nav-item nav-font js-nav-item"><a href="calcu.html" class="nav-link">查看统计</a></li>
+			<a href="datain.html" class="nav-link"><li  class="nav-item nav-font js-nav-item">录入数据</li></a>
+			<a href="calcu.html" class="nav-link"><li  class="nav-item nav-font js-nav-item">查看统计</li></a>
 	</ul>
 	<div class="nav-productor nav-font">by wyx0k version:1.0</div>
 
@@ -223,30 +223,69 @@ function trenddata(n){
 	var data=getpuredata();
 	if(data.length<=n){
 		var trenddata=[];
-		for(i=0;i<data.length;i++){
-			
-				var childdata=[];
+		if(!(localStorage.getItem(today))){//如果没有则添加今天数据
+			var childdata=[];
+				childdata.push(today);
+				childdata.push(0);
+				trenddata.push(childdata);
+		}
+		for(i=0;i<data.length;i++){//原始数据转换格式【日期，长度（个数）】
+				childdata=[];
 				childdata.push(data[i][0][0]);
 				childdata.push(data[i].length);
 				trenddata.push(childdata);
-			
 		}
+		var newtoday=caldate(today,-n+1);
+		var newtrend=[];
+			for(j=0;j<n;j++){//-------------------------------------缺漏补齐0			
+				for(i=0;i<trenddata.length;i++){
+					if(trenddata[i][0]==newtoday){
+					newtrend.push(trenddata[i]);
+						break;
+					}
+				}
+				if(!newtrend[j]){
+				childdata=[];
+				childdata.push(newtoday);
+				childdata.push(0);
+				newtrend.push(childdata);
+				}
+				newtoday=caldate(newtoday,1);
+			}
 	}else{
 			var trenddata=[];
-		for(i=data.length-1;i>=data.length-n;i--){
+		for(i=data.length-1;i>=data.length-n;i--){//--------------------------预处理同上
 				var childdata=[];
 				childdata.push(data[i][0][0]);
 				childdata.push(data[i].length);
 				trenddata.push(childdata);
 		}
 		trenddata.reverse();
+
+		var newtoday=caldate(today,-n+1);
+		var newtrend=[];
+			for(j=0;j<n;j++){//-------------------------------------缺漏补齐0			
+				for(i=0;i<trenddata.length;i++){
+					if(trenddata[i][0]==newtoday){
+					newtrend.push(trenddata[i]);
+						break;
+					}
+				}
+				if(!newtrend[j]){
+				childdata=[];
+				childdata.push(newtoday);
+				childdata.push(0);
+				newtrend.push(childdata);
+				}
+				newtoday=caldate(newtoday,1);
+			}
 	}
-	if(n==30){
-		for(i=0;i<trenddata.length;i++){
-			trenddata[i][0]=trenddata[i][0].substring(5);
+		if(n==30){//三十天的日期格式
+			for(i=0;i<newtrend.length;i++){
+				newtrend[i][0]=newtrend[i][0].substring(5);
+			}
 		}
-	}
-	return trenddata;
+	return newtrend;
 }
 //----------------------------------------------------------}
 var trend=function (data,n){//------------------------------------------------趋势部分
@@ -324,16 +363,39 @@ var trend=function (data,n){//------------------------------------------------�
 	//--------------------------------------------------------------}
 	return div;
 }
-function changeclass(node,oldclass,newclass){
+ function caldate(date,days){//日期计算
+ 		date=date.replace('.','-');
+ 		date=date.replace('.','-');
+    var d=new Date(date);
+   	    d.setDate(d.getDate()+days);
+   	var m=(d.getMonth()+1<10)?'0'+(d.getMonth()+1):d.getMonth()+1;
+   	var day=(d.getDate()<10)?'0'+d.getDate():d.getDate();
+ 	    return d.getFullYear()+'.'+m+'.'+day;
+     } 
+function comdate(date1,date2){//日期比较
+ 		date1=date1.replace('.','-');
+ 		date1=date1.replace('.','-');
+ 		date2=date2.replace('.','-');
+ 		date2=date2.replace('.','-');
+    var d1=new Date(date1);
+    var d2=new Date(date2);
+   	    if(d1>d2){
+   	    	return true;
+   	    }else{
+   	    	return false;
+   	    }
+     }
+
+function changeclass(node,oldclass,newclass){//更改类名
 	if(node){
 		var classes=node.className;
 		if(oldclass){
 		changedclasses=classes.replace(oldclass,newclass);
 		node.className=changedclasses;
 		}
-	}//更改类名
+	}
 }
-function hide(){
+function hide(){//隐藏样式
 	var currentChart=document.getElementsByClassName('right-calcu-area');
 	var currentTable=document.getElementsByClassName('right-count-area');
 	for(i=0;i<currentChart.length;i++){
@@ -350,15 +412,22 @@ function hide(){
 //--------------------------------------------------------------统计部分{
 function countdata(n){
 	var data=getpuredata();
+	var newday=caldate(today,-n);
 	if(data.length<=n){
 		var countdata=[];
 		for(i=0;i<data.length;i++){
+			if(comdate(data[i][0][0],newday)){
 				countdata.push(data[i]);
+			}	
 		}
+	
 	}else{
 			var countdata=[];
 		for(i=data.length-1;i>=data.length-n;i--){
+
+				if(comdate(data[i][0][0],newday)){
 				countdata.push(data[i]);
+			}
 		}
 	}
 	countdata=getdata(countdata);
